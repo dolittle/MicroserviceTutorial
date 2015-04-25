@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="/Bifrost/Application" type="text/javascript"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+
+    <select data-bind="options: messageTypes, optionsText:'name', value: selectedMessageType"></select>
+
+    <!-- ko if: selectedMessageType() -->
+    <table>
+        <tbody data-bind="foreach: selectedMessageType().properties">
+            <!-- ko if: $data != 'MessageType' -->
+            <tr>
+                <td data-bind="text: $data"></td>
+                <td>
+                    <input type="text" data-bind="value: $root.values[$data]" />
+                </td>
+            </tr>
+            <!-- /ko -->
+
+        </tbody>
+    </table>
+    <!-- /ko -->
+
+    <button data-bind="click:sendMessage">Send</button>
+
+    <!-- ko foreach: messages -->
+    <div data-bind="text: $data"></div>
+    <!-- /ko -->
+
+
+</body>
+</html>

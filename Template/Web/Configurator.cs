@@ -1,4 +1,8 @@
-﻿using Bifrost.Configuration;
+﻿using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Routing;
+using Bifrost.Configuration;
+using Web.Messaging;
 
 namespace Web
 {
@@ -9,6 +13,8 @@ namespace Web
             configure
                 .Serialization
                     .UsingJson()
+
+#if(true)
                 .Frontend
                     .Web(w =>
                     {
@@ -25,6 +31,9 @@ namespace Web
                         w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("{0}.Read.**.", baseNamespace));
                         w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("{0}.**.", baseNamespace));
                     });
+#endif
+
+            configure.Container.Get<IMessageBroker>();
         }
     }
 }
