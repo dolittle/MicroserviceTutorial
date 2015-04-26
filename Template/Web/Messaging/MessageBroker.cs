@@ -69,10 +69,6 @@ namespace Web.Messaging
             _consumer = new QueueingBasicConsumer(_channel);
             _channel.BasicConsume(_consumerName, true, _consumer);
 
-            int workers;
-            int completion;
-            ThreadPool.GetMaxThreads(out workers, out completion);
-
             ThreadPool.QueueUserWorkItem(Receiver);
         }
 
