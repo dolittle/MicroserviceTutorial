@@ -69,44 +69,52 @@ namespace Web.Messaging
             _consumer = new QueueingBasicConsumer(_channel);
             _channel.BasicConsume(_consumerName, true, _consumer);
 
+            int workers;
+            int completion;
+            ThreadPool.GetMaxThreads(out workers, out completion);
+
             ThreadPool.QueueUserWorkItem(Receiver);
         }
 
 
         void Receiver(object state)
         {
-            var result = _consumer.Queue.Dequeue();
             try
             {
-                if( !result.Redelivered )
+                var result = _consumer.Queue.Dequeue();
+                try
                 {
-                    var messageAsString = Encoding.UTF8.GetString(result.Body);
-
-                    var messageHash = JObject.Parse(messageAsString);
-                    var messageTypeValue = messageHash["messageType"] ?? messageHash["MessageType"];
-
-                    var messageTypeAsString = messageTypeValue.Value<string>();
-                    if (_messageTypesByName.ContainsKey(messageTypeAsString))
+                    if (!result.Redelivered)
                     {
-                        var messageType = _messageTypesByName[messageTypeAsString];
-                        var concreteMessage = JsonConvert.DeserializeObject(messageAsString, messageType);
+                        var messageAsString = Encoding.UTF8.GetString(result.Body);
 
-                        var consumersByType = _consumersByMessageType.Where(k => k.Key.IsAssignableFrom(messageType)).Select(k=>k.Value);
-                        consumersByType.ForEach(c => c.ForEach(consumer =>
+                        var messageHash = JObject.Parse(messageAsString);
+                        var messageTypeValue = messageHash["messageType"] ?? messageHash["MessageType"];
+
+                        var messageTypeAsString = messageTypeValue.Value<string>();
+                        if (_messageTypesByName.ContainsKey(messageTypeAsString))
                         {
-                            var handleMethod = consumer.GetType().GetMethod("Handle", BindingFlags.Public | BindingFlags.Instance);
-                            if (handleMethod != null)
-                                handleMethod.Invoke(consumer, new object[] { concreteMessage });
-                        }));
+                            var messageType = _messageTypesByName[messageTypeAsString];
+                            var concreteMessage = JsonConvert.DeserializeObject(messageAsString, messageType);
+
+                            var consumersByType = _consumersByMessageType.Where(k => k.Key.IsAssignableFrom(messageType)).Select(k => k.Value);
+                            consumersByType.ForEach(c => c.ForEach(consumer =>
+                            {
+                                var handleMethod = consumer.GetType().GetMethod("Handle", BindingFlags.Public | BindingFlags.Instance);
+                                if (handleMethod != null)
+                                    handleMethod.Invoke(consumer, new object[] { concreteMessage });
+                            }));
+                        }
                     }
                 }
-            }
-            catch
-            {
-                _consumer.Queue.Enqueue(result);
-            }
+                catch
+                {
+                    _consumer.Queue.Enqueue(result);
+                }
 
-            ThreadPool.QueueUserWorkItem(Receiver);
+                ThreadPool.QueueUserWorkItem(Receiver);
+            }
+            catch { }
         }
 
         public IEnumerable<Type> GetMessageTypes()
