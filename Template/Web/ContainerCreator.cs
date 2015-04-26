@@ -7,10 +7,17 @@ namespace Web
 {
     public class ContainerCreator : ICanCreateContainer
     {
+        public readonly static IKernel Kernel;
+
+        static ContainerCreator()
+        {
+            Kernel = new StandardKernel();
+        }
+
         public IContainer CreateContainer()
         {
-            var kernel = new StandardKernel();
-            var container = new Container(kernel);
+            
+            var container = new Container(Kernel);
             return container;
         }
     }

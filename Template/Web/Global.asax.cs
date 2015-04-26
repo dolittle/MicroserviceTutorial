@@ -1,19 +1,22 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.Owin;
+using Owin;
+using Bifrost.Extensions;
 
 namespace Web
 {
     public class Global : System.Web.HttpApplication
     {
-
         protected void Application_Start(object sender, EventArgs e)
         {
-            /*
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(RegisterWebApiRoutes);
+            GlobalConfiguration.Configuration.DependencyResolver = new Ninject.Web.WebApi.NinjectDependencyResolver(ContainerCreator.Kernel);
             RegisterRoutes(RouteTable.Routes);
-            GlobalConfiguration.Configure(RegisterWebApiRoutes);*/
         }
 
 
@@ -30,17 +33,8 @@ namespace Web
 
         void RegisterWebApiRoutes(HttpConfiguration config)
         {
-            // Web API configuration and services
-
             // Web API routes
             config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
         }
-
     }
 }
