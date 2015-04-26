@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using Web.Messages;
 using Web.Messaging;
 
 namespace Web.Api
@@ -7,18 +9,23 @@ namespace Web.Api
     [AllowAnonymous]
     public class SampleApiController : ApiController
     {
+        IMessageBroker _messageBroker;
+
         public SampleApiController(IMessageBroker messageBroker)
         {
-            var i = 0;
-            i++;
+            _messageBroker = messageBroker;
         }
 
 
-        [Route("Alive")]
+        [Route("Perform")]
         [HttpGet]
-        public void Alive()
+        public void Perform()
         {
-            //return true;
+            var name = "Something : "+Guid.NewGuid();
+            _messageBroker.Send(new Sample
+            {
+                Name = name
+            });
         }
     }
 }
