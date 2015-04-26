@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using Bifrost.Execution;
 using Bifrost.Extensions;
-using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
-using Web.TestBench;
 using IConnection = RabbitMQ.Client.IConnection;
 
 namespace Web.Messaging
@@ -49,14 +48,14 @@ namespace Web.Messaging
             });
             _messageTypesByName = typeDiscoverer.FindMultiple(typeof(Message)).ToDictionary(t => t.Name, t => t);
 
-            _topicName = "TheTopic";
-            _consumerName = "Template";
+            _topicName = ConfigurationManager.AppSettings["RabbitMQTopic"];
+            _consumerName = ConfigurationManager.AppSettings["RabbitMQQueue"];
 
             _connectionFactory = new ConnectionFactory() 
             { 
-                HostName = "mstutorial.cloudapp.net",
-                UserName = "tutorial",
-                Password = "tutorial"
+                HostName = ConfigurationManager.AppSettings["RabbitMQServer"],
+                UserName = ConfigurationManager.AppSettings["RabbitMQUsername"],
+                Password = ConfigurationManager.AppSettings["RabbitMQPassword"]
             };
 
             _connection = _connectionFactory.CreateConnection();
