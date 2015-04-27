@@ -15,6 +15,5 @@ namespace Web.Cart
         {
             return _cartRepository.Get();
         }
-        
     }
 }
