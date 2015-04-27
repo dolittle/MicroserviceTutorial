@@ -29,6 +29,8 @@ Source/Bifrost.QuickStart/App_Data
 *.cache
 TestResults/*
 NDependOut
+*.mdf
+*.json
 
 # OS generated files #
 ######################
