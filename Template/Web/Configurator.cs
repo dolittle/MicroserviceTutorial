@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bifrost.Configuration;
+using Web.Cart;
 using Web.Messaging;
 
 namespace Web
@@ -34,6 +35,7 @@ namespace Web
 #endif
 
             configure.Container.Get<IMessageBroker>();
+            configure.Container.Get<ICartRepository>().Configure();
         }
     }
 }

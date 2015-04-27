@@ -1040,6 +1040,11 @@
   <ItemGroup>
     <Compile Include="Api\SampleConsumer.cs" />
     <Compile Include="Api\SampleDbContext.cs" />
+    <Compile Include="Cart\Cart.cs" />
+    <Compile Include="Cart\CartConsumer.cs" />
+    <Compile Include="Cart\CartHub.cs" />
+    <Compile Include="Cart\CartRepository.cs" />
+    <Compile Include="Cart\ICartRepository.cs" />
     <Compile Include="Configurator.cs" />
     <Compile Include="ContainerCreator.cs" />
     <Compile Include="Api\SampleApiController.cs" />
