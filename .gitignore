@@ -31,6 +31,7 @@ TestResults/*
 NDependOut
 *.mdf
 *.json
+**/App_Data/*
 
 # OS generated files #
 ######################

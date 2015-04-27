@@ -1,4 +1,4 @@
 ﻿<i class="fa fa-shopping-cart fa-2x" style="top: -8px; position: relative;"></i>
 &nbsp;
-<span class="badge" style="top: -24px; left: -24px; position: relative;" data-bind="text: cart().items"></span>
+<span class="badge" style="top: -24px; left: -24px; position: relative;" data-bind="text: cart().items, visible: cart().items >= 1"></span>
 <span style="top: -10px; position: relative;">Totalt: <b data-bind="text: cart().total"></b></span>

@@ -4,6 +4,7 @@ using System.Web.Routing;
 using Bifrost.Configuration;
 using Web.Cart;
 using Web.Messaging;
+using Web.Navigation;
 
 namespace Web
 {
@@ -36,6 +37,7 @@ namespace Web
 
             configure.Container.Get<IMessageBroker>();
             configure.Container.Get<ICartRepository>().Configure();
+            configure.Container.Get<ICategoryRepository>().Configure();
         }
     }
 }
