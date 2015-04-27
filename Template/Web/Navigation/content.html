@@ -1,0 +1,20 @@
+﻿<style>
+ #contentFrame {
+    position:absolute;
+    left: 0;
+    width: 100%;
+    top: 1200px;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-9">
+            <div data-navigation-frame="home: home" data-bind="visible: currentNavigationItem().target == '_self'"></div>
+            <iframe id="contentFrame" name="contentFrame" class="col-md-9" data-bind="attr: { src: currentNavigationItem().link }, visible: currentNavigationItem().target != '_self'"></iframe>
+        </div>
+    </div>
+</div>

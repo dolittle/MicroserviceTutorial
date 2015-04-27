@@ -1,0 +1,27 @@
+﻿<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                The Place
+            </a>
+        </div>
+        <div class="navbar-brand navbar-right">
+            <a href="#" class="cart" data-view="Cart/index" data-bind="click: goToCart"></a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-left">
+            <!-- ko foreach: navigationItems -->
+            <li data-bind="css: { active: $root.currentNavigationItem() == $data }">
+                <a data-bind="attr: { href: link, target: target }, text: name, click: $root.select.bind($data,$data)"></a>
+            </li>
+            <!-- /ko -->
+        </ul>
+
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" data-bind="value: searchQuery">
+            </div>
+            <button type="submit" class="btn btn-default" data-bind="click: submitSearch">Submit</button>
+        </form>
+    </div>
+</nav>

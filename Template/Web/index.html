@@ -4,10 +4,34 @@
     <title></title>
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
     <script src="/Bifrost/Application" type="text/javascript"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    <style>
+        .cart {
+            color:white;
+        }
+
+        a.cart {
+            text-decoration: none;
+        }
+        a.cart:hover {
+            color:lightgray;
+        }
+        a.cart:visited {
+            color:white;
+        }
+        a.cart:active {
+            color:white;
+        }
+        a.cart:link {
+            color:white;
+        }
+    </style>
 </head>
 <body>
-    <div data-navigation-frame="home: home"></div>
+    <div data-view="Navigation/index"></div>
+
+    <div data-view="Navigation/content"></div>
 </body>
 </html>
