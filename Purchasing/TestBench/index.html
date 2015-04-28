@@ -1,0 +1,45 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="page-header">
+                <h1>Testbench - <small>test your messages</small></h1>
+            </div>
+
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="selectMessage" class="col-sm-2 control-label">Select message</label>
+                    <div class="col-sm-10">
+                        <select id="selectMessage" class="form-control" data-bind="options: messageTypes, optionsText:'name', value: selectedMessageType"></select>
+                    </div>
+                </div>
+
+                <!-- ko if: selectedMessageType() -->
+                <!-- ko foreach: selectedMessageType().properties -->
+                <!-- ko if: $data != 'MessageType' -->
+                <div class="form-group">
+                    <label data-bind="text: $data" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" data-bind="value: $root.values[$data]" />
+                    </div>
+                </div>
+
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- /ko -->
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" data-bind="click:sendMessage" class="btn btn-default">Send</button>
+                    </div>
+                </div>
+            </form>
+            <hr />
+
+            <!-- ko foreach: messages -->
+            <div class="alert alert-success" role="alert" data-bind="text: $data">
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
