@@ -1006,6 +1006,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Views\Testing\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1052,6 +1053,7 @@
     <Compile Include="ContainerCreator.cs" />
     <Compile Include="Api\SampleApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1060,9 +1062,12 @@
     <Compile Include="Messages\ItemRemovedFromCart.cs" />
     <Compile Include="Messages\MaterialAdded.cs" />
     <Compile Include="Messages\MaterialInOrder.cs" />
+    <Compile Include="Messages\MaterialPriceChanged.cs" />
     <Compile Include="Messages\MaterialQuantityChanged.cs" />
     <Compile Include="Messages\OrderDelivered.cs" />
     <Compile Include="Messages\OrderInTransit.cs" />
+    <Compile Include="Messages\OrderCancelled.cs" />
+    <Compile Include="Messages\OrderPackaged.cs" />
     <Compile Include="Messages\OrderPicked.cs" />
     <Compile Include="Messages\OrderPickingStarted.cs" />
     <Compile Include="Messages\OrderPlaced.cs" />

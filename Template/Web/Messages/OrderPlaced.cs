@@ -1,6 +1,6 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Web.Messaging;
+
 namespace Web.Messages
 {
     public class OrderPlaced : Message

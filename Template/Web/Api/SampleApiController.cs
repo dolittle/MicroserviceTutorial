@@ -5,8 +5,6 @@ using Web.Messaging;
 
 namespace Web.Api
 {
-    [RoutePrefix("SampleApi")]
-    [AllowAnonymous]
     public class SampleApiController : ApiController
     {
         IMessageBroker _messageBroker;
@@ -16,16 +14,16 @@ namespace Web.Api
             _messageBroker = messageBroker;
         }
 
-
-        [Route("Perform")]
         [HttpGet]
-        public void Perform()
+        public string Perform(int blah)
         {
             var name = "Something : "+Guid.NewGuid();
             _messageBroker.Send(new Sample
             {
                 Name = name
             });
+
+            return "Hello";
         }
     }
 }

@@ -119,6 +119,7 @@ namespace Web.Messaging
 
         public void Send(Message message)
         {
+            message.TimeStamp = DateTime.UtcNow;
             message.MessageType = message.GetType().Name;
             var messageAsString = JsonConvert.SerializeObject(message);
             var body = Encoding.UTF8.GetBytes(messageAsString);

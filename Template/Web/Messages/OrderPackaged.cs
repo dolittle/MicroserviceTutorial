@@ -1,10 +1,10 @@
-﻿using Web.Messaging;
+﻿using System;
+using Web.Messaging;
 
 namespace Web.Messages
 {
-    public class OrderDelivered : Message
+    public class OrderPackaged : Message
     {
-
         public string OrderNumber { get; set; }
     }
 }

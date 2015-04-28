@@ -2,9 +2,8 @@
 
 namespace Web.Messages
 {
-    public class OrderDelivered : Message
+    public class OrderCancelled : Message
     {
-
         public string OrderNumber { get; set; }
     }
 }
