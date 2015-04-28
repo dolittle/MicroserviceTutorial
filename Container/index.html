@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/sidebar.css" rel="stylesheet" />
+    <script src="/Bifrost/Application" type="text/javascript"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <style>
+        .cart {
+            color:white;
+        }
+
+        a.cart {
+            text-decoration: none;
+        }
+        a.cart:hover {
+            color:lightgray;
+        }
+        a.cart:visited {
+            color:white;
+        }
+        a.cart:active {
+            color:white;
+        }
+        a.cart:link {
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div data-view="Navigation/index" style="height:50px;"></div>
+    <div id="wrapper">
+        
+        <div id="sidebar-wrapper" data-view="Navigation/sidebar"></div>
+
+        <div id="page-content-wrapper">
+            <div data-view="Navigation/content"></div>
+        </div>
+
+    </div>
+        
+</body>
+</html>
