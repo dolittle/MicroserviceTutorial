@@ -1049,8 +1049,8 @@
   <ItemGroup>
     <Compile Include="Api\CatalogApiController.cs" />
     <Compile Include="Api\MaterialConsumer.cs" />
-    <Compile Include="Api\SampleConsumer.cs" />
     <Compile Include="Api\ProductDbContext.cs" />
+    <Compile Include="Api\SampleConsumer.cs" />
     <Compile Include="Api\SampleDbContext.cs" />
     <Compile Include="Configurator.cs" />
     <Compile Include="ContainerCreator.cs" />
