@@ -1,5 +1,5 @@
 ﻿<ul class="sidebar-nav" data-bind="foreach: categories">
     <li>
-        <a href="#" data-bind="text: $data"></a>
+        <a data-bind="text: $data, click: $root.navigate.bind($data,$data)"></a>
     </li>
 </ul>
