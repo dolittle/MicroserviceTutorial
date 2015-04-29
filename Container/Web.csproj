@@ -222,6 +222,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Purchasing\index.html" />
+    <Content Include="Purchasing\index.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1086,6 +1088,8 @@
     <Compile Include="Navigation\CategoryHub.cs" />
     <Compile Include="Navigation\CategoryRepository.cs" />
     <Compile Include="Navigation\ICategoryRepository.cs" />
+    <Compile Include="Purchasing\Material.cs" />
+    <Compile Include="Purchasing\PurchasingHub.cs" />
     <Compile Include="Status\StatusHub.cs" />
     <Compile Include="Status\StatusMessageConsumer.cs" />
     <Compile Include="Status\SystemWithStatus.cs" />

@@ -6,7 +6,7 @@
             { name: "Status", link: "#Status/index", target: "_self" },
             { name: "OrderHistory", link: "http://www.vg.no", target: "contentFrame" },
             { name: "Warehouse", link: "http://www.db.no", target: "contentFrame" },
-            { name: "Purchasing", link: "http://www.apple.no", target: "contentFrame" },
+            { name: "Purchasing", link: "#Purchasing/index", target: "_self" },
             { name: "Packaging", link: "http://www.itavisen.no", target: "contentFrame" },
             { name: "Delivery", link: "http://www.digi.no", target: "contentFrame" },
         ];
