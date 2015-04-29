@@ -8,5 +8,5 @@
     }
 </style>
 
-<div data-navigation-frame="home: home" data-bind="visible: currentNavigationItem().target == '_self'"></div>
+<div data-bind="visible: currentNavigationItem().target == '_self', view: currentNavigationItem().link"></div>
 <iframe id="contentFrame" name="contentFrame" data-bind="attr: { src: currentNavigationItem().link }, visible: currentNavigationItem().target != '_self'"></iframe>

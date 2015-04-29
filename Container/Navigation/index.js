@@ -3,6 +3,7 @@
         var self = this;
         this.navigationItems = [
             { name: "TestBench", link: "#TestBench/index", target: "_self" },
+            { name: "Status", link: "#Status/index", target: "_self" },
             { name: "OrderHistory", link: "http://www.vg.no", target: "contentFrame" },
             { name: "Warehouse", link: "http://www.db.no", target: "contentFrame" },
             { name: "Purchasing", link: "http://www.apple.no", target: "contentFrame" },
